@@ -49,6 +49,10 @@ INSTALLED_APPS = [
 
     # my_apps
     'account',
+    'category',
+    'order',
+    'product',
+    'rating',
 ]
 
 MIDDLEWARE = [
@@ -207,5 +211,3 @@ CKEDITOR_CONFIGS = {
         'width': 300,
     },
 }
-
-# dddddddd
