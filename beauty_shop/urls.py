@@ -22,6 +22,7 @@ from rest_framework.routers import SimpleRouter
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from category.views import CategoryViewSet
+
 # from product.views import ProductViewSet
 
 router = SimpleRouter()
@@ -29,16 +30,16 @@ router.register('categories', CategoryViewSet)
 # router.register('products', ProductViewSet)
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="beauty_shop",
-      default_version='v1',
-      description="Fullstackhackathon",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
-      license=openapi.License(name="BSD License"),
-   ),
-   public=True,
-   permission_classes=[permissions.AllowAny],
+    openapi.Info(
+        title="beauty_shop",
+        default_version='v1',
+        description="FullStack_Hackathon",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@snippets.local"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
 )
 
 urlpatterns = [
@@ -52,6 +53,5 @@ urlpatterns = [
     # path('api/v1/orders/', include('order.urls')),
     path('api/v1/', include(router.urls))
 ]
-
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
