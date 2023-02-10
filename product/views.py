@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import permissions, response
+from rest_framework.pagination import PageNumberPagination
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 from rest_framework.decorators import action
 
 # from rating.serializers import ReviewSerializer, ReviewActionSerializer
@@ -9,8 +12,18 @@ from . import serializers
 from .permissions import IsAuthor
 
 
+class ProductPagination(PageNumberPagination):
+    page_size = 9
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
+
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
+    pagination_class = ProductPagination
+    filter_backends = (SearchFilter, DjangoFilterBackend)
+    search_fields = ('title',)
+    filterset_fields = ('category', 'title', 'price',)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
