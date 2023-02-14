@@ -24,3 +24,21 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Like(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='liked_product')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='likes')
+
+
+    class Meta:
+        unique_together = ['owner', 'product']
+
+
+class Favorites(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorite_product')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='favorites')
+
+
+    class Meta:
+        unique_together = ['owner', 'product']
