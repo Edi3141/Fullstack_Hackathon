@@ -14,3 +14,4 @@ urlpatterns = [
     # path('likes/<int:pk>/', views.LikeDeleteView.as_view()),
     # path('api/v1/favorites/', views.FavoritesCreateView.as_view()),
 ]
+# fgghjk
