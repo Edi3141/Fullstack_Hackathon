@@ -11,3 +11,4 @@ django-ckeditor
 python-decouple
 requests
 PyJWT
+django-cors-headers
