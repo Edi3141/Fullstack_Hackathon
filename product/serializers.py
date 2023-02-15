@@ -7,14 +7,16 @@ from .models import Product, Like, Favorites
 
 class ProductListSerializer(serializers.ModelSerializer):
     owner_email = serializers.ReadOnlyField(source='owner.email')
+    reviews = ReviewSerializer(many=True)
 
     class Meta:
         model = Product
-        fields = ('owner', 'owner_email', 'title', 'price', 'image', 'stock')
+        fields = ('owner', 'owner_email', 'title', 'price', 'image', 'stock', 'reviews')
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
         repr['rating'] = instance.reviews.aggregate(Avg('rating'))['rating__avg']
+        # repr['text'] = instance.reviews('text')
         return repr
 
 
@@ -22,7 +24,7 @@ class ProductSerializer(serializers.ModelSerializer):
     owner_email = serializers.ReadOnlyField(source='owner.email')
     owner = serializers.ReadOnlyField(source='owner.id')
 
-    reviews = ReviewSerializer(many=True)
+    # reviews = ReviewSerializer(many=True)
 
     class Meta:
         model = Product
