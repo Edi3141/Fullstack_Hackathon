@@ -212,7 +212,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://sub.example.com",
     "http://localhost:8000",
     "http://127.0.0.1:3000",
-    "http://:34.67.71.48",
+    "http://:34.121.141.26",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
