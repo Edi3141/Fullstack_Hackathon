@@ -196,39 +196,23 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar_YourCustomToolbarConfig': [
-            {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-            {'name': 'paragraph',
-             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-                       'Language']},
-            {'name': 'insert',
-             'items': ['HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
-            '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
-            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            '/',
-        ],
-        'toolbar': 'YourCustomToolbarConfig',
-        'height': 300,
-        'width': 300,
-    },
-}
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
 
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_BROKER_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+#                       redis://127.0.0.1:6379/0
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
-CSRF_TRUSTED_ORIGINS = [
-        'http://localhost',
-        'http://127.0.0.1',
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "https://example.com",
-    "https://sub.example.com",
-    "http://localhost:8000",
-    "http://127.0.0.1:3000",
-    "http://34.67.71.48/",
-]
-
+# CORS_ALLOWED_ORIGINS = [
+#     "https://example.com",
+#     "https://sub.example.com",
+#     "http://localhost:8000",
+#     "http://127.0.0.1:3000",
+#     "http://:32.43.54.65",
+# ]
+#
+# CORS_ALLOW_ALL_ORIGINS = True
