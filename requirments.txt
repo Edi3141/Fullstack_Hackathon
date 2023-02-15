@@ -12,3 +12,5 @@ python-decouple
 requests
 PyJWT
 django-cors-headers
+celery
+redis

@@ -7,6 +7,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from . import serializers
 from .send_email import send_confirmation_email, send_reset_email
+from beauty_shop.tasks import send_confirm_email_task
+
 
 User = get_user_model()
 
@@ -20,7 +22,8 @@ class RegistrationView(APIView):
             user = serializer.save()
             if user:
                 try:
-                    send_confirmation_email(user.email, user.activation_code)
+                    # send_confirmation_email(user.email, user.activation_code)
+                    send_confirm_email_task.delay(user.email, user.activation_code)
                 except:
                     return Response(
                         {
