@@ -207,12 +207,12 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://example.com",
-#     "https://sub.example.com",
-#     "http://localhost:8000",
-#     "http://127.0.0.1:3000",
-#     "http://:32.43.54.65",
-# ]
-#
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8000",
+    "http://127.0.0.1:3000",
+    "http://:34.67.71.48",
+]
+
+CORS_ALLOW_ALL_ORIGINS = True

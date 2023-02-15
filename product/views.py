@@ -58,7 +58,6 @@ class ProductViewSet(ModelViewSet):
             serializer.save(owner=request.user, product=product)
             return response.Response(serializer.data, status=201)
 
-
     @action(['DELETE'], detail=True)
     def review_delete(self, request, pk):
         product = self.get_object()
@@ -68,7 +67,6 @@ class ProductViewSet(ModelViewSet):
         review = product.reviews.get(owner=user)
         review.delete()
         return response.Response('Successfully deleted', status=204)
-
 
     @action(['GET'], detail=True)
     def get_like(self, request, pk):
@@ -96,7 +94,7 @@ class ProductViewSet(ModelViewSet):
     def get_favorite(self, request, pk):
         product = self.get_object()
         favorites = product.favorites.all()
-        serializer = serializers.FavoriteSerializerSerializer(instance=favorites, many=True)
+        serializer = serializers.FavoriteSerializer(instance=favorites, many=True)
         return Response(serializer.data, status=200)
 
     @action(['POST', 'DELETE'], detail=True)
