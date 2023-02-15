@@ -53,12 +53,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/accounts/', include('account.urls')),
     path('api/v1/reviews/', include('rating.urls')),
+
     # path('api/v1/likes/', views.LikeCreateView.as_view()),
     # path('api/v1/likes/<int:pk>/', views.LikeDeleteView.as_view()),
     # path('api/v1/favorites/', views.FavoritesCreateView.as_view()),
     # path('api/v1/favorites/<int:pk>/', views.FavoritesDeleteView.as_view()),
     # path('api/v1/orders/', include('order.urls')),
     path('api/v1/', include('product.urls')),
+
+    path('api/v1/orders/', include('order.urls')),
     path('api/v1/', include(router.urls))
 ]
 
